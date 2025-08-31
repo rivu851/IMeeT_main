@@ -152,7 +152,7 @@ const HeroSection = () => {
   className="
     w-36 h-36 md:w-60 md:h-60
     rounded-full
-    absolute top-24 md:top-60 md:left-16 md:-translate-y-1/2 md:translate-x-0
+    absolute top-20 md:top-60 md:left-16 md:-translate-y-1/2 md:translate-x-0
     mx-auto
     overflow-hidden
   "
