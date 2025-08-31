@@ -171,7 +171,7 @@ const HeroSection = () => {
       >
         {/* Logo & Arrows */}
         <motion.div
-          className="flex items-center justify-center w-full gap-8 md:gap-16 mb-10 pt-14 mt-12"
+          className="flex items-center justify-center w-full gap-8 md:gap-16 mb-10 pt-14 mt-5"
           variants={fadeUp}
         >
           <motion.img src={ArrowLeft} alt="left arrows" className="w-12 md:w-20" variants={arrowVariants} animate="animate" />
