@@ -185,7 +185,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Hashtag + Timer */}
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start w-full px-6 max-w-4xl mx-auto mt-6 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start w-full px-6 max-w-4xl mx-auto mt-2 gap-6">
           {/* Hashtag */}
           <motion.div className="text-center md:text-left font-bebas" variants={fadeUp}>
             <TypeAnimation
