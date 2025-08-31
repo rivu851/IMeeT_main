@@ -239,7 +239,7 @@ const HeroSection = () => {
         className="
         w-20 h-20 md:w-60 md:h-60
 rounded-full
-absolute bottom-6 md:top-60 md:right-16 md:-translate-y-1/2
+absolute bottom-0 md:top-60 md:right-16 md:-translate-y-1/2
 mx-auto
 overflow-hidden
 
