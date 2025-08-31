@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-size: cover;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td align="center" style="padding: 20px;">
+                    <table role="presentation" width="700px" cellspacing="0" cellpadding="0" border="0" style="background: #e1dce9; border-radius: 12px; box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2); overflow: hidden;">
+                        <tr>
+                            <td align="center" style="background: linear-gradient(to right, #0f0f0f, #6a11cb); padding: 30px;">
+                                <img src="https://yourwebsite.com/assets/imeet-logo.png" alt="ImeeT 2025" style="max-width: 120px; margin-bottom: 10px;">
+                                <h1 style="color: white; font-size: 24px; margin: 0;">You're Registered for ${eventdata[0].name} 🎉</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 25px; font-size: 16px; color: #333; line-height: 1.6; text-align: left;">
+                                <p>Dear <strong>${username}</strong>,</p>
+                                <p>Thank you for registering for <strong>${eventdata[0].name}</strong>! We're excited to have you with us.</p>
+                                <p>To stay updated with event details, discussions, and important announcements, join our WhatsApp group by clicking the button below.</p>
+                                
+                                <div style="text-align: center; margin: 25px 0;">
+                                    <a href="${eventdata[0].grp_link}" style="display: inline-block; padding: 14px 30px; font-size: 16px; color: #ffffff; background: linear-gradient(to right, #6a11cb, #2575fc); text-decoration: none; border-radius: 6px; box-shadow: 0px 4px 8px rgba(106, 17, 203, 0.3); transition: 0.3s;">
+                                        Join WhatsApp Group
+                                    </a>
+                                </div>
+                                
+                                <p>If you have any questions, feel free to reply to this email or reach out to us through the contact numbers given on the website.</p>
+                                <p>See you at the event! 🎊</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background: #0f0f0f; padding: 20px; text-align: center; color: #bbb; font-size: 12px;">
+                                Best Regards,<br>
+                                <strong style="color: #ffffff; display: inline-block; margin-top: 8px;">Team ImeeT</strong>
+                            </td>                            
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

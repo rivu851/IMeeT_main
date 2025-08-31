@@ -1,0 +1,18 @@
+gallery section
+user Profile:-
+	My Up Comming evnents
+	view All events
+
+cannot keep team memebers name
+	what if name spelling is wrong 
+	what if dupilcate name people exist 
+	THOUGHT OF USING ROLL NUMBER:-
+		what if he logged in with personal mail
+	Only OPTION {EMAIL} unique for all
+
+
+when team memeber is not signed up it displays that 
+
+"Team memeber 2 is not registered"
+
+NEW "One of the memebers is not registered"

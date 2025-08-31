@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient-shift 3s linear infinite;
+}
+
+/* Simple animated gradient background */
+.simple-animated-gradient {
+  background-size: 200% 200%;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Gradient Directions */
+.gradient-left {
+  animation-name: gradientMoveX;
+}
+.gradient-right {
+  animation-name: gradientMoveX;
+  animation-direction: reverse;
+}
+.gradient-top {
+  animation-name: gradientMoveY;
+}
+.gradient-bottom {
+  animation-name: gradientMoveY;
+  animation-direction: reverse;
+}
+.gradient-diagonal {
+  animation-name: gradientMoveXY;
+}
+.gradient-reverse-diagonal {
+  animation-name: gradientMoveYX;
+}
+
+/* Animations */
+@keyframes gradientMoveX {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientMoveY {
+  0% { background-position: 50% 0%; }
+  50% { background-position: 50% 100%; }
+  100% { background-position: 50% 0%; }
+}
+
+@keyframes gradientMoveXY {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes gradientMoveYX {
+  0% { background-position: 100% 0%; }
+  50% { background-position: 0% 100%; }
+  100% { background-position: 100% 0%; }
+}
+
+

@@ -1,0 +1,137 @@
+
+{
+    "technical": [
+      {
+        "id": 1,
+        "name": "Nerd Nirvana",
+        "description": "Technical Quiz",
+        "date": "2025-04-11",
+        "time": "10:00 AM",
+        "venue": "Lab 1",
+        "rules": [
+          "No internet access allowed."
+        ],
+        "cordinators":"",
+        "contact":"",
+        "image":"../assets/imeetlogo.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Code Conquest",
+        "description":[ "A fast-paced coding competition to test your skills",
+        "A fast-paced coding competition to test your skills","A fast-paced coding competition to test your skills",
+        "A fast-paced coding competition to test your skills","A fast-paced coding competition to test your skills",
+        "A fast-paced coding competition to test your skills","A fast-paced coding competition to test your skills"
+        ],
+        "date": "2025-04-11",
+        "time": "2:00 PM",
+        "venue": "Lab 2",
+        "rules": [
+          "Only individual participation is allowed.",
+          "Participants must use only C++, Java, or Python.",
+          "No plagiarism.",
+          "Only individual participation is allowed."
+          
+        ],
+        "cordinators":"",
+        "contact":"",
+         "image":"../assets/Event-img2.png"
+      },{
+        "id": 3,
+        "name": "Nerd Nirvana",
+        "description": "Technical Quiz",
+        "date": "2025-04-11",
+        "time": "10:00 AM",
+        "venue": "Lab 1",
+        "rules": [
+          "No internet access allowed."
+        ],
+        "cordinators":"",
+        "contact":"",
+         "image":"../assets/imeetlogo.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Code Conquest",
+        "description": "A fast-paced coding competition to test your skills.",
+        "date": "2025-04-11",
+        "time": "2:00 PM",
+        "venue": "Lab 2",
+        "rules": [
+          "Only individual participation is allowed.",
+          "Participants must use only C++, Java, or Python.",
+          "No plagiarism."
+        ],
+        "cordinators":"",
+        "contact":"",
+         "image":"../assets/imeetlogo.jpg"
+      }
+    ],
+    "non_Technical": [
+      {
+        "id": 5,
+        "name": "Dance Competition",
+        "description": "Show off your moves in solo or group dance performances.",
+        "date": "2025-04-11",
+        "time": "5:00 PM",
+        "venue": "Main Auditorium",
+        "rules": [
+          "Time limit: 5 minutes per performance.",
+          "No explicit content in performances.",
+          "Participants must bring their own music track."
+        ],
+        "cordinators":"",
+        "contact":"",
+         "image":"../assets/imeetlogo.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Singing Competition",
+        "description": "A competition for melodious voices across genres.",
+        "date": "2025-04-14",
+        "time": "4:00 PM",
+        "venue": "Open Stage",
+        "rules": [
+          "Participants can perform solo or in duets.",
+          "Maximum performance time: 4 minutes.",
+          "No background vocals allowed."
+        ],
+        "cordinators":"",
+        "contact":"",
+         "image":"../assets/imeetlogo.jpg"
+      },{
+        "id": 7,
+        "name": "Dance Competition",
+        "description": "Show off your moves in solo or group dance performances.",
+        "date": "2025-04-11",
+        "time": "5:00 PM",
+        "venue": "Main Auditorium",
+        "rules": [
+          "Time limit: 5 minutes per performance.",
+          "No explicit content in performances.",
+          "Participants must bring their own music track."
+        ],
+        "cordinators":"",
+        "contact":"",
+         "image":"../assets/imeetlogo.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Singing Competition",
+        "description": "A competition for melodious voices across genres.",
+        "date": "2025-04-14",
+        "time": "4:00 PM",
+        "venue": "Open Stage",
+        "rules": [
+          "Participants can perform solo or in duets.",
+          "Maximum performance time: 4 minutes.",
+          "No background vocals allowed."
+        ],
+        "cordinators":"",
+        "contact":"",
+         "image":"../assets/imeetlogo.jpg"
+      }
+    ]
+  }
+
+  
