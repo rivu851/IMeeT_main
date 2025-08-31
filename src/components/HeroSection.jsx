@@ -164,7 +164,7 @@ const HeroSection = () => {
 
 
       <motion.div
-        className="relative z-10 flex flex-col items-center px-6 max-w-6xl mx-auto mt-12"
+        className="relative z-10 flex flex-col items-center px-6 max-w-6xl mx-auto mt-5"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
