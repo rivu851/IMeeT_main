@@ -7,12 +7,16 @@ import ArrowRight from "/arrow-right.svg";
 import ImeeTLogo from "/ImeeT 2025.svg";
 
 const HeroSection = () => {
+  // Initial countdown → 10d 20h 20m 2s in seconds
   const initialTime =
     10 * 24 * 60 * 60 + 20 * 60 * 60 + 20 * 60 + 2;
 
+  // Get or set the fixed end timestamp
   const getEndTime = () => {
     const savedEndTime = localStorage.getItem("eventEndTime");
-    if (savedEndTime) return parseInt(savedEndTime, 10);
+    if (savedEndTime) {
+      return parseInt(savedEndTime, 10);
+    }
     const newEndTime = Date.now() + initialTime * 1000;
     localStorage.setItem("eventEndTime", newEndTime);
     return newEndTime;
@@ -32,7 +36,9 @@ const HeroSection = () => {
   const [remainingSeconds, setRemainingSeconds] = useState(
     Math.max(Math.floor((endTime - Date.now()) / 1000), 0)
   );
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(remainingSeconds));
+  const [timeLeft, setTimeLeft] = useState(
+    calculateTimeLeft(remainingSeconds)
+  );
   const [hasEnded, setHasEnded] = useState(false);
 
   useEffect(() => {
@@ -40,6 +46,7 @@ const HeroSection = () => {
       setHasEnded(true);
       return;
     }
+
     const timer = setInterval(() => {
       setRemainingSeconds((prev) => {
         if (prev <= 1) {
@@ -50,6 +57,7 @@ const HeroSection = () => {
         return prev - 1;
       });
     }, 1000);
+
     return () => clearInterval(timer);
   }, [remainingSeconds]);
 
@@ -57,9 +65,13 @@ const HeroSection = () => {
     setTimeLeft(calculateTimeLeft(remainingSeconds));
   }, [remainingSeconds]);
 
+  // Variants
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
   };
 
   const fadeUp = {
@@ -73,19 +85,33 @@ const HeroSection = () => {
   };
 
   const arrowVariants = {
-    animate: { y: [0, -10, 0], transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } },
+    animate: {
+      y: [0, -10, 0],
+      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+    },
   };
 
   const floatVariants = {
-    animate: { y: [0, -15, 0], transition: { duration: 3, repeat: Infinity, ease: "easeInOut" } },
+    animate: {
+      y: [0, -15, 0],
+      transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+    },
   };
 
   const timerUnitVariants = {
     initial: { scale: 1 },
-    pulse: { scale: [1, 1.08, 1], transition: { duration: 0.6, repeat: Infinity, repeatDelay: 0.5 } },
-    hover: { scale: 1.1, boxShadow: "0 0 15px rgba(168, 85, 247, 0.5)", transition: { duration: 0.3 } },
+    pulse: {
+      scale: [1, 1.08, 1],
+      transition: { duration: 0.6, repeat: Infinity, repeatDelay: 0.5 },
+    },
+    hover: {
+      scale: 1.1,
+      boxShadow: "0 0 15px rgba(168, 85, 247, 0.5)",
+      transition: { duration: 0.3 },
+    },
   };
 
+  // Header text always fixed
   const getHeaderText = () => "LEARN, LEAD, LAUNCH";
 
   const timerUnits = [
@@ -96,29 +122,58 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative h-screen flex flex-col justify-center items-center text-white text-center overflow-hidden">
-      {/* Moving background */}
+    <section className="relative h-screen flex flex-col justify-center items-center text-white text-center overflow-hidden ">
+      {/* Moving background - moderate noticeable */}
       <motion.div
         className="absolute inset-0"
-        style={{ backgroundImage: `url(${hero})`, backgroundSize: "cover", backgroundPosition: "center" }}
-        animate={{ scale: [1, 1.12, 1], x: [0, -25, 0, 25, 0], y: [0, -15, 0, 15, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          backgroundImage: `url(${hero})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        animate={{
+          scale: [1, 1.12, 1],
+          x: [0, -25, 0, 25, 0],
+          y: [0, -15, 0, 15, 0],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
       />
 
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
       {/* Floating Logo Left */}
-      <motion.img
-        src="/imeet_nobg.png"
-        alt="Floating ImeeT Logo"
-        className="absolute z-20 w-40 md:w-60 top-24 left-32 md:top-1/3 md:left-12 -translate-x-1/2 md:translate-x-0"
-        variants={floatVariants}
-        animate="animate"
-      />
+  <motion.img
+  src="/imeet_nobg.png"
+  alt="Floating ImeeT Logo"
+  className="
+    w-36 h-36 md:w-60 md:h-60
+    rounded-full
+    absolute top-24 md:top-60 md:left-16 md:-translate-y-1/2 md:translate-x-0
+    mx-auto
+    overflow-hidden
+  "
+  variants={floatVariants}
+  animate="animate"
+/>
 
-      <motion.div className="relative z-10 flex flex-col items-center px-6 max-w-6xl mx-auto" variants={containerVariants} initial="hidden" animate="visible">
+
+
+
+      <motion.div
+        className="relative z-10 flex flex-col items-center px-6 max-w-6xl mx-auto mt-12"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Logo & Arrows */}
-        <motion.div className="flex items-center justify-center w-full gap-8 md:gap-16 mb-10 pt-14 mt-14" variants={fadeUp}>
+        <motion.div
+          className="flex items-center justify-center w-full gap-8 md:gap-16 mb-10 pt-14 mt-12"
+          variants={fadeUp}
+        >
           <motion.img src={ArrowLeft} alt="left arrows" className="w-12 md:w-20" variants={arrowVariants} animate="animate" />
           <motion.img src={ImeeTLogo} alt="ImeeT 2025 Logo" className="w-[250px] md:w-[420px]" variants={logoVariants} />
           <motion.img src={ArrowRight} alt="right arrows" className="w-12 md:w-20" variants={arrowVariants} animate="animate" />
@@ -131,6 +186,7 @@ const HeroSection = () => {
 
         {/* Hashtag + Timer */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start w-full px-6 max-w-4xl mx-auto mt-6 gap-6">
+          {/* Hashtag */}
           <motion.div className="text-center md:text-left font-bebas" variants={fadeUp}>
             <TypeAnimation
               sequence={["#jab_IT_met", 1000, "#stay_tuned", 1000]}
@@ -141,6 +197,7 @@ const HeroSection = () => {
             />
           </motion.div>
 
+          {/* Timer */}
           <motion.div className="flex justify-center md:justify-end gap-4 w-full md:w-3/5 font-bebas" variants={fadeUp}>
             {timerUnits.map((unit, index) => (
               <motion.div
@@ -179,7 +236,16 @@ const HeroSection = () => {
       <motion.img
         src="/iei_logo_main.png"
         alt="Floating ImeeT Logo"
-        className="absolute z-20 w-20 sm:w-24 md:w-48 bottom-6 right-[10.5rem] md:top-72 md:right-12"
+        className="
+        w-20 h-20 md:w-60 md:h-60
+rounded-full
+absolute bottom-6 md:top-60 md:right-16 md:-translate-y-1/2
+mx-auto
+overflow-hidden
+
+
+
+        "
         variants={floatVariants}
         animate="animate"
       />
