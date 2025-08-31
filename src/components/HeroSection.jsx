@@ -125,23 +125,23 @@ const HeroSection = () => {
     <section className="relative h-screen flex flex-col justify-center items-center text-white text-center overflow-hidden ">
       {/* Moving background - moderate noticeable */}
       <motion.div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${hero})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        animate={{
-          scale: [1, 1.12, 1],
-          x: [0, -25, 0, 25, 0],
-          y: [0, -15, 0, 15, 0],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+  className="absolute inset-0"
+  style={{
+    backgroundImage: `url(${hero})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+  animate={{
+    scale: [1, 1.06, 1],       // smaller zoom
+    x: [0, -10, 0, 10, 0],     // less horizontal shift
+    y: [0, -5, 0, 5, 0],       // less vertical shift
+  }}
+  transition={{
+    duration: 18,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
 
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
