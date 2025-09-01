@@ -84,9 +84,17 @@ const HeroSection = () => {
     visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 80 } },
   };
 
-  const arrowVariants = {
+  // Updated arrow motions
+  const arrowVariantsLeft = {
     animate: {
-      y: [0, -10, 0],
+      x: [0, 10, 0], // nudge right (towards logo)
+      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+    },
+  };
+
+  const arrowVariantsRight = {
+    animate: {
+      x: [0, -10, 0], // nudge left (towards logo)
       transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
     },
   };
@@ -125,43 +133,40 @@ const HeroSection = () => {
     <section className="relative h-screen flex flex-col justify-center items-center text-white text-center overflow-hidden ">
       {/* Moving background - moderate noticeable */}
       <motion.div
-  className="absolute inset-0"
-  style={{
-    backgroundImage: `url(${hero})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
-  animate={{
-    scale: [1, 1.06, 1],       // smaller zoom
-    x: [0, -10, 0, 10, 0],     // less horizontal shift
-    y: [0, -5, 0, 5, 0],       // less vertical shift
-  }}
-  transition={{
-    duration: 18,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-/>
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${hero})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        animate={{
+          scale: [1, 1.06, 1],       // smaller zoom
+          x: [0, -10, 0, 10, 0],     // less horizontal shift
+          y: [0, -5, 0, 5, 0],       // less vertical shift
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
       {/* Floating Logo Left */}
-  <motion.img
-  src="/imeet_nobg.png"
-  alt="Floating ImeeT Logo"
-  className="
-    w-36 h-36 md:w-60 md:h-60
-    rounded-full
-    absolute top-14 md:top-48 md:left-16 md:-translate-y-1/2 md:translate-x-0
-    mx-auto
-    overflow-hidden
-  "
-  variants={floatVariants}
-  animate="animate"
-/>
-
-
-
+      <motion.img
+        src="/imeet_nobg.png"
+        alt="Floating ImeeT Logo"
+        className="
+          w-36 h-36 md:w-60 md:h-60
+          rounded-full
+          absolute top-14 md:top-48 md:left-16 md:-translate-y-1/2 md:translate-x-0
+          mx-auto
+          overflow-hidden
+        "
+        variants={floatVariants}
+        animate="animate"
+      />
 
       <motion.div
         className="relative z-10 flex flex-col items-center px-6 max-w-6xl mx-auto mt-5"
@@ -174,9 +179,26 @@ const HeroSection = () => {
           className="flex items-center justify-center w-full gap-8 md:gap-16 mb-10 pt-14 mt-5"
           variants={fadeUp}
         >
-          <motion.img src={ArrowLeft} alt="left arrows" className="w-12 md:w-20" variants={arrowVariants} animate="animate" />
-          <motion.img src={ImeeTLogo} alt="ImeeT 2025 Logo" className="w-[250px] md:w-[420px]" variants={logoVariants} />
-          <motion.img src={ArrowRight} alt="right arrows" className="w-12 md:w-20" variants={arrowVariants} animate="animate" />
+          <motion.img
+            src={ArrowLeft}
+            alt="left arrows"
+            className="w-12 md:w-20"
+            variants={arrowVariantsLeft}
+            animate="animate"
+          />
+          <motion.img
+            src={ImeeTLogo}
+            alt="ImeeT 2025 Logo"
+            className="w-[250px] md:w-[420px]"
+            variants={logoVariants}
+          />
+          <motion.img
+            src={ArrowRight}
+            alt="right arrows"
+            className="w-12 md:w-20"
+            variants={arrowVariantsRight}
+            animate="animate"
+          />
         </motion.div>
 
         {/* Subtext */}
@@ -238,13 +260,10 @@ const HeroSection = () => {
         alt="Floating ImeeT Logo"
         className="
         w-20 h-20 md:w-60 md:h-60
-rounded-full
-absolute bottom-0 md:top-48 md:right-16 md:-translate-y-1/2
-mx-auto
-overflow-hidden
-
-
-
+        rounded-full
+        absolute bottom-0 md:top-48 md:right-16 md:-translate-y-1/2
+        mx-auto
+        overflow-hidden
         "
         variants={floatVariants}
         animate="animate"
