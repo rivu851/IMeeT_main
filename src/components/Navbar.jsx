@@ -84,19 +84,6 @@ const Navbar = () => {
       >
         {/* LEFT: Logo */}
         <div className="flex items-center pl-1 lg:pl-3">
-<<<<<<< HEAD
-  <img
-    src="/imeet_nobg.png"
-    alt="IMeeT Logo"
-    className="hidden lg:block w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]"
-  />
-  <span className="ml-1 lg:ml-2 text-xl lg:text-2xl font-bold tracking-wide">
-    <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">I</span>
-    <span className="bg-white bg-clip-text text-transparent">mee</span>
-    <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">T 2025</span>
-  </span>
-</div>
-=======
           <img
             src="/imeet_nobg.png"
             alt="IMeeT Logo"
@@ -108,7 +95,6 @@ const Navbar = () => {
             <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">T 2025</span>
           </span>
         </div>
->>>>>>> 79aca10 (Updated frontend components and configs)
 
         {/* NAV */}
         <nav className="fixed top-4 right-4 z-50 transition-all duration-500 rounded-full bg-gradient-to-r from-purple-900/70 to-indigo-900/70 border border-purple-500/30 shadow-lg">
