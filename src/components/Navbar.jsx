@@ -27,7 +27,7 @@ const Navbar = () => {
 
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("http://localhost:3412/participant-details", {
+        const response = await axios.get("https://imeetserver2k25.onrender.com/participant-details", {
           params: { email: user.email },
           headers: {
             "Content-Type": "application/json",
@@ -84,6 +84,7 @@ const Navbar = () => {
       >
         {/* LEFT: Logo */}
         <div className="flex items-center pl-1 lg:pl-3">
+<<<<<<< HEAD
   <img
     src="/imeet_nobg.png"
     alt="IMeeT Logo"
@@ -95,6 +96,19 @@ const Navbar = () => {
     <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">T 2025</span>
   </span>
 </div>
+=======
+          <img
+            src="/imeet_nobg.png"
+            alt="IMeeT Logo"
+            className="hidden lg:block w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]"
+          />
+          <span className="ml-1 lg:ml-2 text-xl lg:text-2xl font-bold tracking-wide">
+            <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">I</span>
+            <span className="bg-white bg-clip-text text-transparent">mee</span>
+            <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">T 2025</span>
+          </span>
+        </div>
+>>>>>>> 79aca10 (Updated frontend components and configs)
 
         {/* NAV */}
         <nav className="fixed top-4 right-4 z-50 transition-all duration-500 rounded-full bg-gradient-to-r from-purple-900/70 to-indigo-900/70 border border-purple-500/30 shadow-lg">
@@ -144,10 +158,10 @@ const Navbar = () => {
                 )}
               </button>
 
-              {/* Profile Avatar */}
+              {/* Profile Avatar (Desktop with Golden Glow) */}
               {isAuthenticated && (
                 <Link to="/profile" onClick={playClickSound}>
-                  <div className="ml-2 w-9 h-9 rounded-full overflow-hidden border-2 border-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.6)]">
+                  <div className="ml-2 w-9 h-9 rounded-full overflow-hidden border-2 border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.9)]">
                     <img
                       src={profileData?.image_url || user?.picture}
                       alt={profileData?.name || user?.name}
@@ -199,7 +213,7 @@ const Navbar = () => {
                     </Link>
                   ))}
 
-                  {/* Profile in Mobile */}
+                  {/* Profile in Mobile with Golden Glow */}
                   {isAuthenticated && (
                     <Link
                       to="/profile"
@@ -209,14 +223,16 @@ const Navbar = () => {
                       }}
                     >
                       <div className="flex items-center p-2">
-                        <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-purple-400 mr-2 shadow-[0_0_8px_rgba(168,85,247,0.6)]">
+                        <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-yellow-400 mr-2 shadow-[0_0_20px_rgba(255,215,0,0.9)]">
                           <img
                             src={profileData.image_url || user?.picture}
                             alt={profileData?.name || user?.name}
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <span className="text-sm text-white truncate">{profileData?.name || user?.name || "User"}</span>
+                        <span className="text-sm text-white truncate">
+                          {profileData?.name || user?.name || "User"}
+                        </span>
                       </div>
                     </Link>
                   )}

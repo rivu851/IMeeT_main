@@ -14,7 +14,7 @@ const Events = () => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:3412/allEvents");
+        const response = await axios.get("https://imeetserver2k25.onrender.com/allEvents");
         if (response.data.data && Array.isArray(response.data.data)) {
           const categorizedEvents = {
             technical: response.data.data.filter(

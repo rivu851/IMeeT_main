@@ -14,7 +14,7 @@ export default function AGallery() {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const res = await axios.get(`http://localhost:3412/gallery/${year}`);
+        const res = await axios.get(`https://imeetserver2k25.onrender.com/gallery/${year}`);
         setImages(res.data.images || []);
       } catch (err) {
         console.error("Failed to fetch images:", err);

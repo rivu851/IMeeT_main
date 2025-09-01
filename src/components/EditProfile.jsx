@@ -43,7 +43,7 @@ const EditProfile = ({ user, onClose, onUpdate }) => {
       if (image) {
         formDataToSend.append("image", image);
       }
-      const response = await axios.post("http://localhost:3412/update-user", formDataToSend, {
+      const response = await axios.post("https://imeetserver2k25.onrender.com/update-user", formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" } 
       });
 

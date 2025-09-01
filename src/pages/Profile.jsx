@@ -68,14 +68,14 @@ const Profile = () => {
 
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3412/participant-details`, {
+        const response = await axios.get(`https://imeetserver2k25.onrender.com/participant-details`, {
           params: { email: user.email },
           headers: { Authorization: `Bearer ${userToken}` }
         });
         setUserData(response.data.data);
 
         const eventRegistrations = await axios.get(
-          'http://localhost:3412/get_user_event_names',
+          'https://imeetserver2k25.onrender.com/get_user_event_names',
           {
             params: { user_uuid: response.data.data.user_id },
             headers: { Authorization: `Bearer ${userToken}` }
@@ -84,7 +84,7 @@ const Profile = () => {
         setEventsRegistered(eventRegistrations.data.data || []);
 
         const fetchUserTeams = await axios.get(
-          'http://localhost:3412/get_user_teams',
+          'https://imeetserver2k25.onrender.com/get_user_teams',
           {
             params: { user_uuid: response.data.data.user_id },
             headers: { Authorization: `Bearer ${userToken}` }

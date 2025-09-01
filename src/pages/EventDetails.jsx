@@ -37,7 +37,7 @@ const EventDetails = () => {
 useEffect(()=>{
   const fetchEventDetails = async()=>{
     try{
-      const response = await axios.get('http://localhost:3412/eventDetails',{
+      const response = await axios.get('https://imeetserver2k25.onrender.com/eventDetails',{
         params:{event_id : event_id},
       });
       if (response.data.data.length > 0) {
@@ -157,7 +157,7 @@ export default EventDetails;
   //   const fetchEventID = async () => {
   //     if (isAuthenticated && event?.name) {
   //       try {
-  //         const response = await axios.get("http://localhost:3412/eventID", {
+  //         const response = await axios.get("https://imeetserver2k25.onrender.com/eventID", {
   //           params: { eventName: event.name },
   //         });
   //         setEventID(response.data.data[0].event_id);

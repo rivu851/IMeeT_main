@@ -160,7 +160,11 @@ const HeroSection = () => {
         className="
           w-36 h-36 md:w-60 md:h-60
           rounded-full
+<<<<<<< HEAD
           absolute top-14 md:top-48 md:left-16 md:-translate-y-1/2 md:translate-x-0
+=======
+          absolute top-14 md:top-44 md:left-16 md:-translate-y-1/2 md:translate-x-0
+>>>>>>> 79aca10 (Updated frontend components and configs)
           mx-auto
           overflow-hidden
         "
@@ -259,7 +263,11 @@ const HeroSection = () => {
         src="/iei_logo_main.png"
         alt="Floating ImeeT Logo"
         className="
+<<<<<<< HEAD
         w-20 h-20 md:w-60 md:h-60
+=======
+        w-20 h-20 md:w-56 md:h-56
+>>>>>>> 79aca10 (Updated frontend components and configs)
         rounded-full
         absolute bottom-0 md:top-48 md:right-16 md:-translate-y-1/2
         mx-auto

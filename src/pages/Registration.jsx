@@ -192,7 +192,7 @@ const Registration = () => {
     try {
       // Only handle team creation if it's a team event
       if (teamEvent) {
-        const teamResponse = await axios.post("http://localhost:3412/create-team", {
+        const teamResponse = await axios.post("https://imeetserver2k25.onrender.com/create-team", {
           event_id,
           team_name: formData.team_name,
         });
@@ -214,7 +214,7 @@ const Registration = () => {
       }
   
       // Proceed with registration
-      const response = await axios.post("http://localhost:3412/registrations", requestData);
+      const response = await axios.post("https://imeetserver2k25.onrender.com/registrations", requestData);
   //POP UP
         if (response.data.success) {
           setShowPopup(true);
@@ -238,7 +238,7 @@ const Registration = () => {
     } catch (error) {
       if (teamCreated && createdTeamName) {
         try {
-          await axios.post("http://localhost:3412/delete-team", { team_name: createdTeamName });
+          await axios.post("https://imeetserver2k25.onrender.com/delete-team", { team_name: createdTeamName });
           console.log("Team deleted successfully due to registration failure.");
         } catch (deleteError) {
           console.error("Error deleting team:", deleteError);
@@ -257,7 +257,7 @@ const Registration = () => {
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
-        const response = await axios.get("http://localhost:3412/eventDetails", {
+        const response = await axios.get("https://imeetserver2k25.onrender.com/eventDetails", {
           params: { event_id: event_id },
         });
 
@@ -278,7 +278,7 @@ const Registration = () => {
     const fetchUserData = async () => {
       if (isAuthenticated && user) {
         try {
-          const response = await axios.get("http://localhost:3412/participant-details", {
+          const response = await axios.get("https://imeetserver2k25.onrender.com/participant-details", {
             params: { email: user.email },
           });
           const res = response.data.data;
@@ -296,7 +296,7 @@ const Registration = () => {
 
   const checkIfRegistered=async(e)=>{
     try{
-      const response = await axios.get('http://localhost:3412/get_user_event_names',{
+      const response = await axios.get('https://imeetserver2k25.onrender.com/get_user_event_names',{
         params:{user_uuid: e}
       })
 
@@ -366,7 +366,7 @@ const Registration = () => {
 
     if ((isContactMissing && isValidContact) || (isUserInfoMissing && isValidDept && isValidRoll)) {
       try {
-        await axios.post("http://localhost:3412/update-user", {
+        await axios.post("https://imeetserver2k25.onrender.com/update-user", {
           email: user.email,
           name: nameValue,
           phone: contactValue,
