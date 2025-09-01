@@ -83,7 +83,7 @@ const Navbar = () => {
         }`}
       >
         {/* LEFT: Logo */}
-         <div className="flex items-center pl-1 lg:pl-3">
+        <div className="flex items-center pl-1 lg:pl-3">
   <img
     src="/imeet_nobg.png"
     alt="IMeeT Logo"
