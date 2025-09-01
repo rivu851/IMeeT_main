@@ -60,7 +60,7 @@ const About = () => {
       <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center gap-16 relative z-10">
         
         {/* LEFT: Text Section */}
-        <div className="lg:w-1/2 flex flex-col items-center lg:items-start">
+        <div className="lg:w-1/2 mb-20  flex flex-col items-center lg:items-start">
           
           {/* Heading with underline */}
           <Motion.h1
@@ -71,13 +71,13 @@ const About = () => {
             className="text-5xl md:text-6xl font-extrabold tracking-tight text-center lg:text-left relative"
           >
             About{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">
+            <span className="text-transparent bg-clip-text bg-amber-500">
   I
 </span>
 <span className="bg-white bg-clip-text text-transparent">
   mee
 </span>
-<span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">
+<span className="text-transparent bg-clip-text bg-amber-500">
   T
 </span>
 
@@ -90,7 +90,7 @@ const About = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.5 }}
-            className="text-lg md:text-xl leading-relaxed mt-8 mb-6 text-gray-300 text-center lg:text-left max-w-xl"
+            className="text-lg md:text-xl leading-relaxed mt-14 text-gray-300 text-center lg:text-left max-w-xl"
           >
             ImeeT is the annual flagship festival of the IT department at RCCIIT,
             celebrating <span className="text-white font-semibold">innovation, creativity</span>, 
@@ -106,7 +106,7 @@ const About = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.5 }}
-            className="text-lg md:text-xl leading-relaxed mb-10 text-gray-300 text-center lg:text-left max-w-xl"
+            className="text-lg md:text-xl leading-relaxed mb-10 text-gray-300 text-center lg:text-left max-w-xl mt-8"
           >
             Join us at <span className="text-fuchsia-400 font-semibold">ImeeT</span>, 
             where technology meets creativity to create an unforgettable festival experience.
@@ -121,20 +121,27 @@ const About = () => {
           >
             <Link to="/gallery" onClick={playClickSound}>
               <Motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative text-lg md:text-xl font-semibold py-3 px-8 rounded-full overflow-hidden
-                  bg-black border border-fuchsia-500/50 text-white
-                  hover:shadow-[0_0_20px_rgba(240,0,255,0.5)] transition-all duration-300"
-              >
-                <span className="relative z-10 flex items-center">
-                  Explore <FaArrowRightLong className="ml-3" size={20} />
-                </span>
-                {/* animated gradient border */}
-                <span className="absolute inset-0 rounded-full border-2 border-transparent 
-                  bg-gradient-to-r from-fuchsia-500 via-purple-500 to-pink-500 
-                  animate-[spin_6s_linear_infinite] opacity-40"></span>
-              </Motion.button>
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="relative text-lg md:text-xl font-semibold py-3 px-8 rounded-full overflow-hidden
+    bg-black border border-gray-300 text-white
+    shadow-[0_0_20px_rgba(192,192,192,0.7)] transition-all mt-6 duration-300
+    group"
+>
+  <span
+    className="relative z-10 flex items-center transition-all  duration-300 group-hover:tracking-wider"
+  >
+    Explore <FaArrowRightLong className="ml-3" size={20} />
+  </span>
+
+  {/* inner animated gradient box (only moves on hover) */}
+  <span
+    className="absolute inset-0 rounded-full border-2 border-transparent
+      bg-gradient-to-r from-gray-200 via-gray-400 to-gray-200
+      opacity-40 group-hover:animate-[spin_6s_linear_infinite]"
+  ></span>
+</Motion.button>
+
             </Link>
           </Motion.div>
         </div>
@@ -142,13 +149,14 @@ const About = () => {
         {/* RIGHT: Image Section with card tilt */}
         <Motion.div
           variants={fadeIn("left", 0.3)}
+          
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.3 }}
           className="lg:w-1/2 flex justify-center"
         >
           <Motion.div
-            whileHover={{ rotateY: 10, rotateX: 5, scale: 1.03 }}
+            whileHover={{  scale: 1.2 }}
             transition={{ type: "spring", stiffness: 120, damping: 12 }}
             className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-900/40 to-black/30 p-4"
           >
