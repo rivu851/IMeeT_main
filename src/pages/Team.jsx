@@ -13,6 +13,8 @@ const Teams = () => {
   const { isAuthenticated } = useAuth();
 
 
+  //onweoifwofnweonwbeniwebiufbewuifbewiufew
+
   useEffect(() => {
   // This ensures Teams re-renders whenever auth state changes
 }, [isAuthenticated]);

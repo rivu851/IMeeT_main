@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -8,12 +10,13 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated, 
     user: auth0User, 
     loginWithRedirect, 
-    logout, 
+    logout: auth0Logout,   // ✅ alias this
     isLoading, 
     getAccessTokenSilently 
   } = useAuth0();
   
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();   // ✅ initialize navigate
 
   useEffect(() => {
     const getToken = async () => {
@@ -66,12 +69,16 @@ export const AuthProvider = ({ children }) => {
           authorizationParams: {
             redirect_uri: window.location.origin
           },
-             
         }),
         logout: () => {
-  setUser(null); // clear local state
-  logout({ logoutParams: { returnTo: window.location.origin } });
-}
+          setUser(null);
+
+          // Clear local session only (no hard reload)
+          auth0Logout({ logoutParams: { localOnly: true } });
+
+          // Navigate to home and replace history
+          navigate("/", { replace: true });
+        }
       }}
     >
       {children}
