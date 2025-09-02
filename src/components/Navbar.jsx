@@ -71,12 +71,12 @@ const Navbar = () => {
   const handleAuth = () => {
   if (isAuthenticated) {
     // 1️⃣ Logout from Auth0
-    logout({
-      logoutParams: { returnTo: window.location.origin },
-       returnTo: window.location.origin,
+   logout({
+      logoutParams: {
+        returnTo: window.location.origin,
         federated: true // 👈 forces Auth0 session logout
-
-    });
+      }
+    });
 
     // 2️⃣ Clear localStorage/sessionStorage
     localStorage.clear();
