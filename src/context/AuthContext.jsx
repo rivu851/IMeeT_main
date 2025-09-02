@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 const AuthContext = createContext();
-
 export const AuthProvider = ({ children }) => {
   const {
     isAuthenticated,
@@ -54,6 +53,20 @@ export const AuthProvider = ({ children }) => {
     }));
     return true;
   };
+const Logout = () => {
+  setUser(null);
+  logout({
+    logoutParams: {
+      returnTo: window.location.origin,
+    },
+    federated: false,
+  });
+
+  // Ensure full reload after logout
+  setTimeout(() => {
+    window.location.href = '/';
+  }, 100);
+};
 
   return (
     <AuthContext.Provider
@@ -67,15 +80,7 @@ export const AuthProvider = ({ children }) => {
               redirect_uri: window.location.origin,
             },
           }),
-        logout: () => {
-          setUser(null);
-          logout({
-            logoutParams: {
-              returnTo: window.location.origin,
-            },
-            federated: false,
-          });
-        },
+        Logout 
       }}
     >
       {children}

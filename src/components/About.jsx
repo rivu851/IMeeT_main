@@ -2,12 +2,13 @@ import { useRef } from "react";
 import { useInView, motion as Motion } from "framer-motion";
 import { fadeIn } from "../Varients";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import about from "../assets/About-img.png";
 import playClickSound from "../utils/ClickSound.js";
 
 const About = () => {
   const imgRef = useRef(null);
+    const navigate = useNavigate();
   const isInView = useInView(imgRef, { once: false, amount: 0.5 }); 
   // 👆 triggers when 50% visible
 
@@ -89,9 +90,9 @@ const About = () => {
             celebrating <span className="text-white font-semibold">innovation, creativity</span>, 
             and the power of technology. It’s a platform where students 
             showcase their talents and push boundaries through events like{" "}
-            <span className="text-fuchsia-400 font-semibold">Nerd Nirvana</span>, 
-            <span className="text-fuchsia-400 font-semibold"> Code Conquest</span>, 
-            and <span className="text-fuchsia-400 font-semibold"> Pixel Perfect</span>.
+            <span  onClick={()=>navigate('/events')} className="text-fuchsia-400 font-semibold">Nerd Nirvana</span>, 
+            <span onClick={()=>navigate('/events')}  className="text-fuchsia-400 font-semibold"> Code Conquest</span>, 
+            and <span  onClick={()=>navigate('/events')}  className="text-fuchsia-400 font-semibold"> Pixel Perfect</span>.
           </Motion.p>
 
           <Motion.p

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
@@ -10,7 +10,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [userData, setUserData] = useState(null);
   const location = useLocation();
-  const { isAuthenticated, login, logout, user, isLoading } = useAuth();
+  const { isAuthenticated, login, Logout, user, isLoading } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -71,7 +71,7 @@ const Navbar = () => {
   const handleAuth = () => {
   if (isAuthenticated) {
     // 1️⃣ Logout from Auth0
-   logout()
+   Logout()
   } else {
     login();
   }
@@ -94,7 +94,7 @@ const Navbar = () => {
             alt="IMeeT Logo"
             className="hidden lg:block w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]"
           />
-          <span className="ml-1 lg:ml-2 text-xl lg:text-2xl font-bold tracking-wide">
+          <span   className="ml-1 lg:ml-2 text-xl lg:text-2xl font-bold tracking-wide">
             <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">I</span>
             <span className="bg-white bg-clip-text text-transparent">mee</span>
             <span className="bg-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(234,179,8,0.8)]">T 2025</span>
