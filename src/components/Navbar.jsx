@@ -69,8 +69,25 @@ const Navbar = () => {
   ];
 
   const handleAuth = () => {
-    isAuthenticated ? logout() : login();
-  };
+  if (isAuthenticated) {
+    // 1️⃣ Logout from Auth0
+    logout({
+      logoutParams: { returnTo: window.location.origin }
+    });
+
+    // 2️⃣ Clear localStorage/sessionStorage
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // 3️⃣ Reset userData state
+    setUserData(null);
+
+    // 4️⃣ Optional: reload page to force state reset
+    window.location.replace(window.location.origin);
+  } else {
+    login();
+  }
+};
 
   return (
     <div className="fixed w-full z-50">
