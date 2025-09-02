@@ -26,10 +26,13 @@ function App() {
   }, []);
   return (
     <Auth0Provider
-  domain="dev-uj2rurz2pwot0bnr.us.auth0.com"
-  clientId="1jd0JtvtONhX6ZD5t9ENGNNxLIZpHW6q"
-  redirectUri={window.location.origin}
+  domain="dev-jgsawtvpf2vqmlx7.us.auth0.com"
+  clientId="pTim8FLK8snpTHsXPfJkoUStnjS38M3Y"
+  authorizationParams={{
+     redirect_uri: window.location.origin,
+  }}
 >
+
       <AuthProvider>
         <Router>
           <Navbar />
