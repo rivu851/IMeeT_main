@@ -25,13 +25,7 @@ function App() {
     };
   }, []);
   return (
-    <Auth0Provider
-  domain="dev-jgsawtvpf2vqmlx7.us.auth0.com"
-  clientId="pTim8FLK8snpTHsXPfJkoUStnjS38M3Y"
-  authorizationParams={{
-     redirect_uri: window.location.origin,
-  }}
->
+  
       <AuthProvider>
         <Router>
           <Navbar />
@@ -48,7 +42,7 @@ function App() {
           <Footer />
         </Router>
       </AuthProvider>
-    </Auth0Provider>
+    
   );
 }
 
