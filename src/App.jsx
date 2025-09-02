@@ -26,10 +26,10 @@ function App() {
   }, []);
   return (
     <Auth0Provider
-      domain={import.meta.env.VITE_REACT_APP_AUTH0_DOMAIN}
-      clientId={import.meta.env.VITE_REACT_APP_AUTH0_CLIENT_ID}
-      redirectUri={window.location.origin}
-    >
+  domain="dev-uj2rurz2pwot0bnr.us.auth0.com"
+  clientId="1jd0JtvtONhX6ZD5t9ENGNNxLIZpHW6q"
+  redirectUri={window.location.origin}
+>
       <AuthProvider>
         <Router>
           <Navbar />
