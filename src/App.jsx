@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Auth0Provider } from '@auth0/auth0-react';
 import { AuthProvider } from './context/AuthContext';
 import Home from "./pages/Home";
@@ -15,7 +15,6 @@ import { useEffect } from "react";
 import * as Tone from "tone";
 
 function App() {
-  const location = useLocation()
   //for instany click sound
   useEffect(() => {
     const unlock = async () => await Tone.start();
@@ -24,7 +23,7 @@ function App() {
     return () => {
       window.removeEventListener("click", unlock); 
     };
-  }, [location]);
+  }, []);
   return (
       <AuthProvider>
         <Router>

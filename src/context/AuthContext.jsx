@@ -1,17 +1,18 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
 const AuthContext = createContext();
-export const AuthProvider = ({ children }) => {
-  const {
-    isAuthenticated,
-    user: auth0User,
-    loginWithRedirect,
-    logout,
-    isLoading,
-    getAccessTokenSilently,
-  } = useAuth0();
 
+export const AuthProvider = ({ children }) => {
+  const { 
+    isAuthenticated, 
+    user: auth0User, 
+    loginWithRedirect, 
+    logout, 
+    isLoading, 
+    getAccessTokenSilently 
+  } = useAuth0();
+  
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
             ...auth0User,
             token,
           };
-
+          
           setUser(updatedUser);
 
           await axios.post(
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }) => {
               },
             }
           );
+
         } catch (error) {
           console.error("Error in authentication process:", error);
         }
@@ -47,26 +49,12 @@ export const AuthProvider = ({ children }) => {
   }, [isAuthenticated, auth0User, getAccessTokenSilently]);
 
   const updateUser = (updatedData) => {
-    setUser((prev) => ({
+    setUser(prev => ({
       ...prev,
-      ...updatedData,
+      ...updatedData
     }));
     return true;
   };
-const Logout = () => {
-  setUser(null);
-  logout({
-    logoutParams: {
-      returnTo: window.location.origin,
-    },
-    federated: false,
-  });
-
-  // Ensure full reload after logout
-  setTimeout(() => {
-    window.location.href = '/';
-  }, 100);
-};
 
   return (
     <AuthContext.Provider
@@ -74,13 +62,16 @@ const Logout = () => {
         isAuthenticated,
         user,
         isLoading,
-        login: () =>
-          loginWithRedirect({
-            authorizationParams: {
-              redirect_uri: window.location.origin,
-            },
-          }),
-        Logout 
+        login: () => loginWithRedirect({
+          authorizationParams: {
+            redirect_uri: window.location.origin
+          },
+             
+        }),
+        logout: () => {
+  setUser(null); // clear local state
+  logout({ logoutParams: { returnTo: window.location.origin } });
+}
       }}
     >
       {children}
@@ -91,7 +82,7 @@ const Logout = () => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
 };
