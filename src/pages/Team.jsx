@@ -2,12 +2,20 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "../context/AuthContext";
+
 
 const Teams = () => {
   const [teamsData, setTeamsData] = useState({});
   const [selectedTeam, setSelectedTeam] = useState("");
   const [expandedCard, setExpandedCard] = useState(null);
   const containerRef = useRef(null);
+  const { isAuthenticated } = useAuth();
+
+
+  useEffect(() => {
+  // This ensures Teams re-renders whenever auth state changes
+}, [isAuthenticated]);
 
   useEffect(() => {
     const fetchTeamData = async () => {
