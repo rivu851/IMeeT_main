@@ -7,63 +7,40 @@ import ArrowRight from "/arrow-right.svg";
 import ImeeTLogo from "/ImeeT 2025.svg";
 
 const HeroSection = () => {
-  // Initial countdown → 10d 20h 20m 2s in seconds
-  const initialTime =
-    10 * 24 * 60 * 60 + 20 * 60 * 60 + 20 * 60 + 2;
+  // Fixed event date: 11 Sept 2025, 10:00 AM local time
+  const eventDate = new Date("2025-09-11T10:00:00").getTime();
 
-  // Get or set the fixed end timestamp
-  const getEndTime = () => {
-    const savedEndTime = localStorage.getItem("eventEndTime");
-    if (savedEndTime) {
-      return parseInt(savedEndTime, 10);
-    }
-    const newEndTime = Date.now() + initialTime * 1000;
-    localStorage.setItem("eventEndTime", newEndTime);
-    return newEndTime;
-  };
-
-  const endTime = getEndTime();
-
-  function calculateTimeLeft(totalSeconds) {
+  function calculateTimeLeft() {
+    const diff = eventDate - Date.now();
     return {
-      days: Math.floor(totalSeconds / (60 * 60 * 24)),
-      hours: Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60)),
-      minutes: Math.floor((totalSeconds % (60 * 60)) / 60),
-      seconds: totalSeconds % 60,
+      total: diff,
+      days: Math.max(Math.floor(diff / (1000 * 60 * 60 * 24)), 0),
+      hours: Math.max(Math.floor((diff / (1000 * 60 * 60)) % 24), 0),
+      minutes: Math.max(Math.floor((diff / 1000 / 60) % 60), 0),
+      seconds: Math.max(Math.floor((diff / 1000) % 60), 0),
     };
   }
 
-  const [remainingSeconds, setRemainingSeconds] = useState(
-    Math.max(Math.floor((endTime - Date.now()) / 1000), 0)
-  );
-  const [timeLeft, setTimeLeft] = useState(
-    calculateTimeLeft(remainingSeconds)
-  );
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [hasEnded, setHasEnded] = useState(false);
 
   useEffect(() => {
-    if (remainingSeconds <= 0) {
+    if (timeLeft.total <= 0) {
       setHasEnded(true);
       return;
     }
 
     const timer = setInterval(() => {
-      setRemainingSeconds((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          setHasEnded(true);
-          return 0;
-        }
-        return prev - 1;
-      });
+      const updated = calculateTimeLeft();
+      setTimeLeft(updated);
+      if (updated.total <= 0) {
+        clearInterval(timer);
+        setHasEnded(true);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [remainingSeconds]);
-
-  useEffect(() => {
-    setTimeLeft(calculateTimeLeft(remainingSeconds));
-  }, [remainingSeconds]);
+  }, [timeLeft.total]);
 
   // Variants
   const containerVariants = {
@@ -84,17 +61,16 @@ const HeroSection = () => {
     visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 80 } },
   };
 
-  // Updated arrow motions
   const arrowVariantsLeft = {
     animate: {
-      x: [0, 10, 0], // nudge right (towards logo)
+      x: [0, 10, 0],
       transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
     },
   };
 
   const arrowVariantsRight = {
     animate: {
-      x: [0, -10, 0], // nudge left (towards logo)
+      x: [0, -10, 0],
       transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
     },
   };
@@ -119,8 +95,7 @@ const HeroSection = () => {
     },
   };
 
-  // Header text always fixed
-  const getHeaderText = () => "LEARN, LEAD, LAUNCH";
+  const getHeaderText = () => "INNOVATE • INSPIRE • IMPACT";
 
   const timerUnits = [
     { label: "DAYS", value: timeLeft.days },
@@ -131,7 +106,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex flex-col justify-center items-center text-white text-center overflow-hidden ">
-      {/* Moving background - moderate noticeable */}
+      {/* Moving background */}
       <motion.div
         className="absolute inset-0"
         style={{
@@ -140,9 +115,9 @@ const HeroSection = () => {
           backgroundPosition: "center",
         }}
         animate={{
-          scale: [1, 1.06, 1],       // smaller zoom
-          x: [0, -10, 0, 10, 0],     // less horizontal shift
-          y: [0, -5, 0, 5, 0],       // less vertical shift
+          scale: [1, 1.06, 1],
+          x: [0, -10, 0, 10, 0],
+          y: [0, -5, 0, 5, 0],
         }}
         transition={{
           duration: 18,
@@ -155,22 +130,22 @@ const HeroSection = () => {
 
       {/* Floating Logo Left */}
       <motion.img
-        src="/imeet_nobg.png"
-        alt="Floating ImeeT Logo"
-        className="
-          w-36 h-36 md:w-60 md:h-60
-          rounded-full
-<<<<<<< HEAD
-          absolute top-14 md:top-48 md:left-16 md:-translate-y-1/2 md:translate-x-0
-=======
-          absolute top-14 md:top-44 md:left-16 md:-translate-y-1/2 md:translate-x-0
->>>>>>> 79aca10 (Updated frontend components and configs)
-          mx-auto
-          overflow-hidden
-        "
-        variants={floatVariants}
-        animate="animate"
-      />
+  src="/imeet_nobg.png"
+  alt="Floating ImeeT Logo"
+  className="
+    w-36 h-36 md:w-60 md:h-60
+    rounded-full
+    absolute top-12 md:top-44 md:left-16 md:-translate-y-1/2
+    mx-auto
+    overflow-hidden
+  "
+  initial={{ x: -200, opacity: 0 }}         // start from left & hidden
+  animate={{ x: 0, opacity: 1 }}           // move into place
+  transition={{ duration: 1, ease: "easeOut" }} // smooth effect
+  variants={floatVariants}                 // keep the floating loop
+  whileInView="animate"
+/>
+
 
       <motion.div
         className="relative z-10 flex flex-col items-center px-6 max-w-6xl mx-auto mt-5"
@@ -245,37 +220,55 @@ const HeroSection = () => {
 
         {/* Header Text */}
         <AnimatePresence mode="wait">
-          <motion.h1
-            key={getHeaderText()}
-            className="text-6xl md:text-8xl font-extrabold tracking-tight mt-6"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {getHeaderText()}
-          </motion.h1>
-        </AnimatePresence>
+  <motion.h1
+    key={getHeaderText()}
+    className="mt-8 text-4xl md:text-7xl font-extrabold tracking-tight leading-tight text-center"
+    initial={{ y: 20, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -20, opacity: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    {/* Mobile / Tablet view */}
+    <span className="block md:hidden">
+      <span className="block">INNOVATE</span>
+      <span className="inline-flex items-center justify-center whitespace-nowrap gap-[0.5ch]
+                      before:content-['•'] after:content-['•']">
+        INSPIRE
+      </span>
+      <span className="block">IMPACT</span>
+    </span>
+
+    {/* Desktop view */}
+    <span className="hidden md:inline-flex items-center gap-2">
+      <span>INNOVATE</span>
+      <span>•</span>
+      <span>INSPIRE</span>
+      <span>•</span>
+      <span>IMPACT</span>
+    </span>
+  </motion.h1>
+</AnimatePresence>
+
       </motion.div>
 
       {/* Floating Logo Right */}
       <motion.img
-        src="/iei_logo_main.png"
-        alt="Floating ImeeT Logo"
-        className="
-<<<<<<< HEAD
-        w-20 h-20 md:w-60 md:h-60
-=======
-        w-20 h-20 md:w-56 md:h-56
->>>>>>> 79aca10 (Updated frontend components and configs)
-        rounded-full
-        absolute bottom-0 md:top-48 md:right-16 md:-translate-y-1/2
-        mx-auto
-        overflow-hidden
-        "
-        variants={floatVariants}
-        animate="animate"
-      />
+  src="/iei_logo_main.png"
+  alt="Floating IEI Logo"
+  className="
+    w-20 h-20 md:w-56 md:h-56
+    rounded-full
+    absolute bottom-0 md:top-48 md:right-16 md:-translate-y-1/2
+    mx-auto
+    overflow-hidden
+  "
+  initial={{ x: 200, opacity: 0 }}          // start off-screen right
+  animate={{ x: 0, opacity: 1 }}            // slide into place
+  transition={{ duration: 1, ease: "easeOut" }} // smooth effect
+  variants={floatVariants}                  // keep the floating loop
+  whileInView="animate"
+/>
+
     </section>
   );
 };
